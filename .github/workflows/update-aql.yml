@@ -18,16 +18,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Add new version in package.json
       run: |
-	      newAquilaVersion=test1
-        echo "newAquilaVersion=$newAquilaVersion" >> $GITHUB_ENV
+        echo "newAquilaVersion=test1" >> $GITHUB_ENV
     - name: Use an ssh script
       uses: appleboy/ssh-action@master
       with:
-	      host: ${{ secrets.HOSTREC }}
+	host: ${{ secrets.HOSTREC }}
         username: ${{ secrets.USERNAMEREC }}
         password: ${{ secrets.PASSWORDREC }}
         port: ${{ secrets.PORTREC }}
-	      script: sh /data/scripts/updateAquilaCMS.sh
+	script: sh /data/scripts/updateAquilaCMS.sh
     - name: Commit file
       run: |
         git config --local user.email "action@github.com"
