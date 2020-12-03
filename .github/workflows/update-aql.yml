@@ -26,7 +26,7 @@ jobs:
         username: ${{ secrets.USERNAMEREC }}
         password: ${{ secrets.PASSWORDREC }}
         port: ${{ secrets.PORTREC }}
-        script: sh /data/scripts/updateAquilaCMS.sh
+        script: whoami
     - name: Commit file
       run: |
         git config --local user.email "action@github.com"
