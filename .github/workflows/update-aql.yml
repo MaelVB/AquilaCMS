@@ -19,14 +19,10 @@ jobs:
     - name: Add new version in package.json
       run: |
         echo "newAquilaVersion=test1" >> $GITHUB_ENV
-    - name: Use an ssh script
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOSTREC }}
-        username: ${{ secrets.USERNAMEREC }}
-        password: ${{ secrets.PASSWORDREC }}
-        port: ${{ secrets.PORTREC }}
-        script: whoami
+        scriptsUrl=${{ secrets.SCRIPTS_URL }}
+        scriptRoute=$scriptsUrl'ping'
+        ping=`curl $scriptRoute`
+        echo $ping
     - name: Commit file
       run: |
         git config --local user.email "action@github.com"
