@@ -4,7 +4,7 @@ const fs   = require('../utils/fsp');
     try {
         console.log("Tests setup script launched")
 
-        const dotEnvContent = "NODE_ENV=test\nAQUILA_ENV=test"
+        const dotEnvContent = "NODE_ENV=test\nAQUILA_ENV=test\nPORT=3050"
         await fs.writeFile('.env', dotEnvContent)
 
         const envJsonContent = {
